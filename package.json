@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "fhir-kit-client": "^1.9.2"
+    "fhir-kit-client": "^1.9.2",
+    "get-trim-all": "^1.0.4"
   }
 }
