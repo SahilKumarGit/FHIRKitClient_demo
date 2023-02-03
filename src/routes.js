@@ -1,6 +1,7 @@
 const express = require('express');
 const patient = require('./controller/patient.controller');
 const appointment = require('./controller/appointment.controller');
+const practice = require('./controller/practice.controller');
 const { fhir } = require('./fhir.config');
 const { FhirSuccessErrorHandler } = require('./util/erroeHandlers.util');
 const _router = express.Router();
@@ -26,6 +27,9 @@ _router.put('/patient/:id', patient.update)
 
 
 _router.post('/appointment', appointment.create)
+
+
+_router.get('/practice', practice.read)
 
 //404
 _router.all('/**', (req, res) => {
