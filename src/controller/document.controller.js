@@ -5,13 +5,6 @@ const { FhirSuccessErrorHandler, exceptionHandler } = require("../util/erroeHand
 const create = async (req, res) => {
     try {
 
-        // if (Object.keys(req.body) < 1) return res.status(400).send(exceptionHandler(
-        //     false,
-        //     400,
-        //     [{ message: 'post body (key-values) must be required!', code: 'bad request' }],
-        //     {}
-        // ));
-
         if ((req?.files || []).length == 0) return res.status(400).send(exceptionHandler(
             false,
             400,
@@ -20,6 +13,15 @@ const create = async (req, res) => {
         ));
 
         const { buffer, mimetype, size } = req.files[0]
+
+        if(mimetype !== 'application/pdf') return res.status(400).send(exceptionHandler(
+            false,
+            400,
+            [{ message: 'Uploaded file type must be a PDF (applicatopn/pdf)!', code: 'bad request' }],
+            {}
+        ));
+
+
 
         const newPatient = {
             "resourceType": "DocumentReference",
