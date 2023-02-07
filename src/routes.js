@@ -1,6 +1,7 @@
 const express = require('express');
 const patient = require('./controller/patient.controller');
 const appointment = require('./controller/appointment.controller');
+const documents = require('./controller/document.controller');
 const practice = require('./controller/practice.controller');
 const { fhir } = require('./fhir.config');
 const { FhirSuccessErrorHandler } = require('./util/erroeHandlers.util');
@@ -30,6 +31,9 @@ _router.post('/appointment', appointment.create)
 
 
 _router.get('/practice', practice.read)
+
+
+_router.post('/document', documents.create)
 
 //404
 _router.all('/**', (req, res) => {
